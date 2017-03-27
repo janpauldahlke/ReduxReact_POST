@@ -5,6 +5,10 @@
   * route '/posts/new' = create new entry
   * multiple http actions // POST; UPDATE; DELETE ..
 
+## with suport of the API on
+- http://reduxblog.herokuapp.com/
+- `reduxblog.herokuapp.com/api/posts?key=<yourString>`
+- check for documentation here
 
 ##to run
 - clone or dl repo
