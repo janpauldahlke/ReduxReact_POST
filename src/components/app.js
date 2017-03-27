@@ -12,5 +12,5 @@ export default class App extends Component {
 
 /* TODO
   - apply nested route into App, by calling it with {this.props.children}
-
+  - child component needs to rendered by app, children are bound to this.props.children like above
  */

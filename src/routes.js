@@ -2,17 +2,14 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/app';
+import PostsIndex from './components/posts_index';
 
 //map route and component here // export them, give atribs to component in index!
 
-const Test = () => {
-  return <div>Hi routes Test</div>;
-};
 
+/* <IndexRoute component={PostsIndex} /> renders all component in parent path*/
 export default (
   <Route path="/" component={ App } >
-    <Route path="test" component={ Test } />
-    <Route path="test2" component={ Test } />
-    <Route path="test3" component={ Test } />
+    <IndexRoute component={ PostsIndex } />
   </Route>
 );
