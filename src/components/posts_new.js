@@ -12,33 +12,57 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form'; //similar to { connect }
 
+import { createPost } from '../actions/index';
+
 class PostsNew extends Component {
+
   render () {
+    //props come with reduxForm
+    //use on onSubmit handler on form
+    const handleSubmit = this.props.handleSubmit;
+    const fields = this.props.fields;
+    const title = fields.title;
+    const categories = fields.categories;
+    const content = fields.content;
+
+    //es6 sugar would be like
+    //const { fields : {title, categories, content}, handleSubmit} = this.props;
+
+    //logging
+    //console.log(title);
+                          //handleSubmit is a reduxForm Method
     return (
-        <form>
+        <form onSubmit={ handleSubmit(this.props.createPost) } >
+
           <h3>create a Post</h3>
+
           <div className="form-group">
             <label>Title</label>
-            <input type="text" className="form-control" />
+            <input type="text" className="form-control" {...title}/>
           </div>
+
           <div className="form-group">
             <label>Category</label>
-            <input type="text" className="form-control" />
+            <input type="text" className="form-control" {...categories}/>
           </div>
+
           <div className="form-group">
             <label>Content</label>
-            <textarea className="form-control" />
+            <textarea className="form-control" {...content}/>
           </div>
+
           <button type="submit" className="btn btn-primary">submit</button>
         </form>
     );
   }
 }
 
-//export default reduxform({**})(PostNew) connect alike
+
+//connect: 1st arg = mapStateToProps, 2nd arg = mapDispatchToProps
+//reduxForm 1st arg = form config, 2nd arg = mapStateToProps, 3rd ARG=  mapDispatchToProps
 export default reduxForm({
   //form matches the key that we creted in the reducer_posts
   //behind the sences: user input is recorded in application state
   form : 'PostsNewForm',
   fields: ['title', 'categories', 'content']
-})(PostsNew);
+}, null, { createPost })(PostsNew);
