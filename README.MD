@@ -8,7 +8,6 @@
 ## with suport of the API on
 - http://reduxblog.herokuapp.com/
 - `reduxblog.herokuapp.com/api/posts?key=<yourString>`
-- `?key=1337unique`
 - check for documentation here
 
 ## to run

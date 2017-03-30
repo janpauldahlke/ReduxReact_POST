@@ -14,6 +14,7 @@ const INITIAL_STATE = {
 export default function(state= INITIAL_STATE, action) {
   switch(action.type) {
     case FETCH_POSTS:
+    //http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html
       return { ...state, all:action.payload.data}; //fency eS6 <3
     default:
       return state;
