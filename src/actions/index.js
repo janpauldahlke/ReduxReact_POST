@@ -10,12 +10,10 @@ export function fetchPosts() {
   const request = axios.get(`${ ROOT_URL }/posts${ API_KEY }`);
 
   //logging
-  console.log('from actions', request);
+  //console.log('from actions', request);
   //
   return{
     type : FETCH_POSTS,
     paylod: request
   };
-
-
 }

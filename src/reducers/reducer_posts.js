@@ -15,8 +15,17 @@ export default function(state= INITIAL_STATE, action) {
   switch(action.type) {
     case FETCH_POSTS:
     //http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html
-      return { ...state, all:action.payload.data}; //fency eS6 <3
+      //console.log('reducer', action);
+                                //syntax error here paylod is true, payload is untrue
+      return { ...state, all : action.paylod.data }; //fency eS6 <3
     default:
       return state;
   }
 }
+
+/* TODO
+  apply actionCreator to URL change
+  to do so, use React Lifecycle
+  https://gist.github.com/monicao/243958d7498ed9fabe78
+  ComponentWillMount()
+*/
