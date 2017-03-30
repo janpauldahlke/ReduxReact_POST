@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //makethis comp a container, cuase it uses action
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 
 import { fetchPosts } from '../actions/index';
 
@@ -15,7 +16,14 @@ class PostsIndex extends Component {
 
   render () {
     return(
-      <div>list posts...</div>
+      <div>
+        <div className="text-xs-right">
+          <Link to="posts/new" className="btn btn-primary" >
+            Add a new Post
+          </Link>
+        </div>
+        list posts...
+      </div>
     );
   }
 }
