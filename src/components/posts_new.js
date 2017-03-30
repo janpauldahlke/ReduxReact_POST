@@ -39,16 +39,25 @@ class PostsNew extends Component {
           <div className="form-group">
             <label>Title</label>
             <input type="text" className="form-control" {...title}/>
+            <div className="text-help">
+              { title.error }
+            </div>
           </div>
 
           <div className="form-group">
             <label>Category</label>
             <input type="text" className="form-control" {...categories}/>
+              <div className="text-help">
+                { categories.error }
+              </div>
           </div>
 
           <div className="form-group">
             <label>Content</label>
             <textarea className="form-control" {...content}/>
+              <div className="text-help">
+                { content.error }
+              </div>
           </div>
 
           <button type="submit" className="btn btn-primary">submit</button>
@@ -57,12 +66,30 @@ class PostsNew extends Component {
   }
 }
 
+function validate (values) {
+  const errors = {};
+
+  if(!values.title) {
+    errors.title = 'Enter a title';
+  }
+  if(!values.categories) {
+    errors.categories = 'give at leat on Category';
+  }
+  if(!values.content) {
+    errors.content = 'one might write a blog here?';
+  }
+
+  return errors;
+}
+//consume errors by {title.error} on jsx component like line 42
 
 //connect: 1st arg = mapStateToProps, 2nd arg = mapDispatchToProps
 //reduxForm 1st arg = form config, 2nd arg = mapStateToProps, 3rd ARG=  mapDispatchToProps
 export default reduxForm({
   //form matches the key that we creted in the reducer_posts
   //behind the sences: user input is recorded in application state
+  //add validate by applying it to the configuration object
   form : 'PostsNewForm',
-  fields: ['title', 'categories', 'content']
+  fields: ['title', 'categories', 'content'],
+  validate
 }, null, { createPost })(PostsNew);
