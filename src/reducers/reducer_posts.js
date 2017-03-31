@@ -16,8 +16,7 @@ export default function(state= INITIAL_STATE, action) {
     case FETCH_POSTS:
     //http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html
       //console.log('reducer', action);
-                                //syntax error here paylod is true, payload is untrue
-      return { ...state, all : action.paylod.data }; //fency eS6 <3
+      return { ...state, all : action.payload.data }; //fency eS6 <3
     default:
       return state;
   }

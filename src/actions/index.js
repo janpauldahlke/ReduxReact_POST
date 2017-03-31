@@ -15,7 +15,7 @@ export function fetchPosts() {
   //
   return{
     type : FETCH_POSTS,
-    paylod: request
+    payload: request
   };
 }
 

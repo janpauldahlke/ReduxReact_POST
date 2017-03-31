@@ -39,7 +39,7 @@ class PostsNew extends Component {
           <div className="form-group">
             <label>Title</label>
             <input type="text" className="form-control" {...title}/>
-            <div className="text-help">
+            <div className="alert alert-warning text-help">
               { title.error }
             </div>
           </div>
@@ -47,7 +47,7 @@ class PostsNew extends Component {
           <div className="form-group">
             <label>Category</label>
             <input type="text" className="form-control" {...categories}/>
-              <div className="text-help">
+              <div className="text-help alert alert-warning ">
                 { categories.error }
               </div>
           </div>
@@ -55,7 +55,7 @@ class PostsNew extends Component {
           <div className="form-group">
             <label>Content</label>
             <textarea className="form-control" {...content}/>
-              <div className="text-help">
+              <div className="text-help alert alert-warning ">
                 { content.error }
               </div>
           </div>
