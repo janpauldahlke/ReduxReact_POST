@@ -27,10 +27,10 @@ class PostsNew extends Component {
         //blogpost has been created, now navgiagte back to index
         //"listen" to resolve of payload.promise()
         //navigate by this.context.router.push() with
-        //the new path to go to
+        //the new path to go to => '/' => index
         this.context.router.push("/");
-      })
-  };
+      });
+  }
   //define on object on PostNew Class so PostNew.contextTypes would be a valid call where it references to Router instances
 
   render () {

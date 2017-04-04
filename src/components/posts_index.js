@@ -16,6 +16,18 @@ class PostsIndex extends Component {
     this.props.fetchPosts();
   }
 
+  renderPosts () {
+    return this.props.posts.map((post) => {
+      return(
+        <li className="list-group-item" key={ post.id }>
+          <span className="pull-xs-right">{ post.categories }</span>
+          <strong> {post.title} </strong>
+        </li>
+      );
+    });
+  }
+
+
   render () {
     return(
       <div>
@@ -24,10 +36,17 @@ class PostsIndex extends Component {
             Add a new Post
           </Link>
         </div>
-        list posts...
+        <h3>post</h3>
+        <ul className="list-group">
+          { this.renderPosts() }
+        </ul>
       </div>
     );
   }
+}
+
+function mapStateToProps(state){
+  return { posts : state.posts.all };
 }
 
 /*function mapDispatchToProps (dispatch) {
@@ -36,7 +55,7 @@ class PostsIndex extends Component {
 
 //export default connect(null, mapDispatchToProps)(PostsIndex);
                                 //shortcut version to avoid function mapDispatchToProps
-export default connect(null, { fetchPosts : fetchPosts })(PostsIndex);
+export default connect(mapStateToProps, { fetchPosts : fetchPosts })(PostsIndex);
 
 /* TODO
   get a list of all blog posts and render/include them here
