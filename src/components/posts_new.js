@@ -9,13 +9,29 @@
 */
 
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form'; //similar to { connect }
 import { Link } from 'react-router';
 
 import { createPost } from '../actions/index';
 
 class PostsNew extends Component {
+  // context() usage
+  static contextTypes = {
+    router : PropTypes.object
+  };
+
+  onSubmit (props) {
+    this.props.createPost(props)
+      .then(() => {
+        //blogpost has been created, now navgiagte back to index
+        //"listen" to resolve of payload.promise()
+        //navigate by this.context.router.push() with
+        //the new path to go to
+        this.context.router.push("/");
+      })
+  };
+  //define on object on PostNew Class so PostNew.contextTypes would be a valid call where it references to Router instances
 
   render () {
     //props come with reduxForm
@@ -35,7 +51,7 @@ class PostsNew extends Component {
     //repvent inital error message by ternary, where x.TOUCHED, comes along with form
     // .VALID() from form TODO highlight error fields red + bootstrap
     return (
-        <form onSubmit={ handleSubmit(this.props.createPost) } >
+        <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) } >
 
           <h3>create a Post</h3>
 
@@ -69,6 +85,10 @@ class PostsNew extends Component {
     );
   }
 }
+
+//TODO feedback to user after POST success
+// 'react-router'.push() method is valid
+// react context() //avoid it, only use it when working with react-router //
 
 function validate (values) {
   const errors = {};
