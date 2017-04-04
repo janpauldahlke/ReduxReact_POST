@@ -11,6 +11,7 @@
 
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form'; //similar to { connect }
+import { Link } from 'react-router';
 
 import { createPost } from '../actions/index';
 
@@ -32,12 +33,13 @@ class PostsNew extends Component {
     //console.log(title);
                           //handleSubmit is a reduxForm Method
     //repvent inital error message by ternary, where x.TOUCHED, comes along with form
+    // .VALID() from form TODO highlight error fields red + bootstrap
     return (
         <form onSubmit={ handleSubmit(this.props.createPost) } >
 
           <h3>create a Post</h3>
 
-          <div className="form-group">
+          <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
             <label>Title</label>
             <input type="text" className="form-control" {...title}/>
             <div className="text-help">
@@ -45,7 +47,7 @@ class PostsNew extends Component {
             </div>
           </div>
 
-          <div className="form-group">
+          <div className={`form-group ${categories.touched && categories.invalid ? 'has-danger' : ''}`}>
             <label>Category</label>
             <input type="text" className="form-control" {...categories}/>
               <div className="text-help">
@@ -53,7 +55,7 @@ class PostsNew extends Component {
               </div>
           </div>
 
-          <div className="form-group">
+          <div className={`form-group ${content.touched && content.invalid ? 'has-danger' : ''}`}>
             <label>Content</label>
             <textarea className="form-control" {...content}/>
               <div className="text-help">
@@ -62,6 +64,7 @@ class PostsNew extends Component {
           </div>
 
           <button type="submit" className="btn btn-primary">submit</button>
+          <Link to="/" className="btn btn-danger">cancel</Link>
         </form>
     );
   }
