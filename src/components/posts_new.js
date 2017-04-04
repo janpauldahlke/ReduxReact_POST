@@ -49,7 +49,7 @@ class PostsNew extends Component {
             <label>Category</label>
             <input type="text" className="form-control" {...categories}/>
               <div className="text-help">
-                { title.touched ? categories.error : ''}
+                { categories.touched ? categories.error : ''}
               </div>
           </div>
 
@@ -57,7 +57,7 @@ class PostsNew extends Component {
             <label>Content</label>
             <textarea className="form-control" {...content}/>
               <div className="text-help">
-                { title.touched ? content.error : ''}
+                { content.touched ? content.error : ''}
               </div>
           </div>
 
@@ -74,10 +74,10 @@ function validate (values) {
     errors.title = 'Enter a title';
   }
   if(!values.categories) {
-    errors.categories = 'give at leat on Category';
+    errors.categories = 'give at least one category';
   }
   if(!values.content) {
-    errors.content = 'one might write a blog here?';
+    errors.content = 'one might write some content here?';
   }
 
   return errors;
