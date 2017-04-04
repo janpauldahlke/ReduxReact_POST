@@ -31,6 +31,7 @@ class PostsNew extends Component {
     //logging
     //console.log(title);
                           //handleSubmit is a reduxForm Method
+    //repvent inital error message by ternary, where x.TOUCHED, comes along with form
     return (
         <form onSubmit={ handleSubmit(this.props.createPost) } >
 
@@ -39,24 +40,24 @@ class PostsNew extends Component {
           <div className="form-group">
             <label>Title</label>
             <input type="text" className="form-control" {...title}/>
-            <div className="alert alert-warning text-help">
-              { title.error }
+            <div className="text-help">
+              { title.touched ? title.error : '' }
             </div>
           </div>
 
           <div className="form-group">
             <label>Category</label>
             <input type="text" className="form-control" {...categories}/>
-              <div className="text-help alert alert-warning ">
-                { categories.error }
+              <div className="text-help">
+                { title.touched ? categories.error : ''}
               </div>
           </div>
 
           <div className="form-group">
             <label>Content</label>
             <textarea className="form-control" {...content}/>
-              <div className="text-help alert alert-warning ">
-                { content.error }
+              <div className="text-help">
+                { title.touched ? content.error : ''}
               </div>
           </div>
 
