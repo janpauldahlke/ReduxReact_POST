@@ -9,3 +9,7 @@ form a {
   margin: 0 auto;
   width: 80%;
 }
+
+.post h3 {
+  margin: 20px 0;
+}
