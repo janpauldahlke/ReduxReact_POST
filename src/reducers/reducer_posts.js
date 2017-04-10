@@ -1,4 +1,4 @@
-import { FETCH_POSTS } from '../actions/index';
+import { FETCH_POSTS, FETCH_POST } from '../actions/index';
 
 //define inital state as object
 //needing 2 states 1.all posts, 2. single post
@@ -17,6 +17,8 @@ export default function(state= INITIAL_STATE, action) {
     //http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html
       //console.log('reducer', action);
       return { ...state, all : action.payload.data }; //fency eS6 <3
+    case FETCH_POST:
+        return {...state, post: action.payload.data};
     default:
       return state;
   }

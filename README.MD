@@ -15,7 +15,3 @@
 - `npm install`
 - `npm start`
 - `localhost:8080`
-
-## notes
-- `"react-router": "^2.0.0-rc5", npm install --save this`
-![react-router application flow](http://i.imgur.com/JPg0Rkp.png)
