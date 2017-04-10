@@ -1,5 +1,10 @@
 /* stylesheet here */
 
+#root{
+  margin: 0 auto;
+  width:80%;
+}
+
 form a {
   margin-left: 10px;
 }
